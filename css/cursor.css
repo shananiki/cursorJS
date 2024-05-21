@@ -1,13 +1,13 @@
-        .cursor {
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            background-size: cover;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 10px;
-            font-family: Arial, sans-serif;
-        }
+.cursor {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+}

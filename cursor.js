@@ -1,3 +1,4 @@
+require ('dotenv').config();
 const express = require('express');
 const http = require('http');
 const https = require('https');
@@ -7,9 +8,12 @@ const cors = require('cors');
 
 const app = express();
 
+var CERT_FILE = process.env.CERT_PATH;
+var KEY_FILE = process.env.KEY_PATH;
+
 const credentials = {
-    cert: fs.readFileSync('/etc/letsencrypt/live/cursor.shananiki.org/fullchain.pem'),
-    key: fs.readFileSync('/etc/letsencrypt/live/cursor.shananiki.org/privkey.pem')
+    cert: fs.readFileSync(CERT_FILE),
+    key: fs.readFileSync(process.env.KEY_PATH)
 };
 
 // CORS setup
