@@ -22,14 +22,20 @@ ws.onclose = () => {
     console.log('Disconnected from the server');
 };
 
+let lastSentTime = 0;
 document.addEventListener('mousemove', (event) => {
-    const mousePosition = {
-        type: 'mouseMovement',
-        x: event.clientX,
-        y: event.clientY
-    };
-    ws.send(JSON.stringify(mousePosition));
+        const currentTime = Date.now();
+        if(currentTime - lastSentTime > 30){
+                const mousePosition = {
+                        type: 'mouseMovement',
+                        x: event.clientX,
+                        y: event.clientY
+                };
+                ws.send(JSON.stringify(mousePosition));
+                lastSentTime = currentTime;
+        }
 });
+
 
 function updateCursors(cursorsData) {
     for (const id in cursors) {
