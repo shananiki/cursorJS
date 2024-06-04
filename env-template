@@ -1,2 +1,4 @@
-CERT_PATH=
-KEY_PATH=
+CERT_PATH=/etc/letsencrypt/live/cursor.shananiki.org/fullchain.pem
+KEY_PATH=/etc/letsencrypt/live/cursor.shananiki.org/privkey.pem
+HOST_PORT=30000
+HOST_IP=0.0.0.0

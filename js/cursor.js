@@ -1,11 +1,8 @@
-const ws = new WebSocket(`${location.protocol === 'http:' ? 'ws:' : 'wss:'}//${window.location.host}` + ':11000');
+const ws = new WebSocket(`${location.protocol === 'http:' ? 'ws:' : 'wss:'}//shananiki.xyz` + ':30001');
 
 const cursors = {};
 let clientId = null;
 
-ws.onopen = () => {
-    console.log('Connected to the server');
-};
 
 ws.onmessage = (event) => {
     const message = JSON.parse(event.data);
@@ -35,7 +32,6 @@ document.addEventListener('mousemove', (event) => {
 });
 
 function updateCursors(cursorsData) {
-    // Remove cursors that no longer exist
     for (const id in cursors) {
         if (!cursorsData.hasOwnProperty(id)) {
             document.body.removeChild(cursors[id]);
@@ -43,7 +39,6 @@ function updateCursors(cursorsData) {
         }
     }
 
-    // Update or add new cursors
     for (const id in cursorsData) {
         if (id === String(clientId)) {
             continue;
@@ -51,8 +46,7 @@ function updateCursors(cursorsData) {
         if (!cursors.hasOwnProperty(id)) {
             const cursorElement = document.createElement('div');
             cursorElement.classList.add('cursor');
-            cursorElement.textContent = id; // Add client ID
-            cursorElement.setAttribute('data-id', id); // Set client ID as an attribute
+            cursorElement.setAttribute('data-id', id); 
 
             const cursorImage = document.createElement('img');
             cursorImage.src = "assets/cursor.png";
